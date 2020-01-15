@@ -5,7 +5,7 @@
 @Version   :  v1.0
 @Author    :  zack
 @Software  :  PyCharm
-@File      :  read_excel.py
+@File      :  read_excel_to_mysql.py
 @Time      :  2020/1/14 14:00
 """
 import os
@@ -26,10 +26,10 @@ import xlrd
 class Read_Excel():
     def __init__(self):
         # 连接数据库
-        self.db = pymysql.connect("192.168.5.192", "root", "123", charset="utf8")
+        self.db = pymysql.connect("192.168.xxx.xxx", "root", "12xxxx", charset="utf8")
         self.cursor = self.db.cursor()
         # 所有文件所在的文件夹目录
-        self.path = r"C:\Users\Desktop\offic\meta_data"
+        self.path = r"C:\Users\Desktop\meta_data"
 
         # self.path = path
 
@@ -67,9 +67,9 @@ class Read_Excel():
     # 将解析的数据保存到数据库
     def writePage(self, r_list):
         # f_db = 'create database if not exists zack_test charset utf8'
-        f_use = 'use test'
+        f_use = 'use zack_test'
         # f_tab = 'create table if not exists t_course(id VARCHAR(100),cName varchar(100),Intensity varchar(100),instrument varchar(100),part varchar(100));'
-        f_ins = 'insert into qcc_data_zack_copy1(code,pany_name,state,province,city,address,deputy,funds,phone,phone_2,email,create_time) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        f_ins = 'insert into info_data(code,pany_name,state,province,city,address,deputy,funds,phone,phone_2,email,create_time) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 
         warnings.filterwarnings("ignore")
         try:
